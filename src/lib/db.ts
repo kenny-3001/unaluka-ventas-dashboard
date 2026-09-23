@@ -5,7 +5,6 @@ import fs from "fs";
 const DB_PATH = path.join(process.cwd(), "data", "app.db");
 
 declare global {
-  // eslint-disable-next-line no-var
   var __db: Database.Database | undefined;
 }
 
