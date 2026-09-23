@@ -193,28 +193,37 @@ const insertAllControl = db.transaction(() => {
       raw: true,
     });
 
-    // fila con los nombres de vendedor (justo encima de la fila "DNI | S/ | UP")
-    const nameRowIndex = rows.findIndex((r) =>
+    // fila con los encabezados "DNI | S/ | UP" de cada bloque de vendedor
+    const headerRowIndex = rows.findIndex((r) =>
       r.some((cell) => typeof cell === "string" && cell.trim() === "DNI")
     );
-    if (nameRowIndex < 1) continue;
-    const nameRow = rows[nameRowIndex - 1];
-    const headerRow = rows[nameRowIndex];
+    if (headerRowIndex < 1) continue;
+    const headerRow = rows[headerRowIndex];
+
+    // el nombre del vendedor está unas filas arriba, en la misma columna que "DNI"
+    // (puede haber filas en blanco de por medio, así que se busca hacia arriba)
+    function findVendorName(col: number): string | null {
+      for (let r = headerRowIndex - 1; r >= 0; r--) {
+        const v = rows[r]?.[col];
+        if (typeof v === "string" && v.trim()) return v.trim();
+      }
+      return null;
+    }
 
     // ubicar el inicio de cada bloque de vendedor por la posición de "DNI"
     const blockStarts: { col: number; vendedor: string }[] = [];
     headerRow.forEach((cell, col) => {
       if (typeof cell === "string" && cell.trim() === "DNI") {
-        const vendedor = nameRow[col - 1];
-        if (typeof vendedor === "string" && vendedor.trim()) {
-          blockStarts.push({ col: col - 1, vendedor: vendedor.trim() });
+        const vendedor = findVendorName(col);
+        if (vendedor) {
+          blockStarts.push({ col: col - 1, vendedor });
         }
       }
     });
 
     const lastDate: Record<number, string | null> = {};
 
-    for (let r = nameRowIndex + 1; r < rows.length; r++) {
+    for (let r = headerRowIndex + 1; r < rows.length; r++) {
       const row = rows[r];
       if (!row) continue;
 
