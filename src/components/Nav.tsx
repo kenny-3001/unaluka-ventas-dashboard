@@ -46,7 +46,7 @@ export default async function Nav() {
               await signOut({ redirectTo: "/login" });
             }}
           >
-            <button className="rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-700 transition hover:bg-gray-50">
+            <button className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-700 transition hover:bg-gray-50">
               Salir
             </button>
           </form>

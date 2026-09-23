@@ -67,14 +67,14 @@ export default function UsuariosPage() {
                     <select
                       name="role"
                       defaultValue={u.role}
-                      className="rounded-md border border-gray-300 px-2 py-1 text-sm"
+                      className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm text-gray-900"
                     >
                       <option value="lectura">Solo lectura</option>
                       <option value="admin">Administrador</option>
                     </select>
                     <button
                       type="submit"
-                      className="rounded-md border border-gray-300 px-2 py-1 text-xs text-gray-700 hover:bg-gray-50"
+                      className="rounded-md border border-gray-300 bg-white px-2 py-1 text-xs text-gray-700 hover:bg-gray-50"
                     >
                       Guardar
                     </button>

@@ -70,7 +70,7 @@ export default async function PedidosPage({
             name="q"
             defaultValue={q}
             placeholder="Pedido, cliente, producto o SKU"
-            className="w-64 rounded-md border border-gray-300 px-3 py-1.5 text-sm"
+            className="w-64 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-900 placeholder:text-gray-400"
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -78,7 +78,7 @@ export default async function PedidosPage({
           <select
             name="vendedor"
             defaultValue={vendedor ?? ""}
-            className="rounded-md border border-gray-300 px-3 py-1.5 text-sm"
+            className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-900"
           >
             <option value="">Todos</option>
             {vendedores.map((v) => (
@@ -93,7 +93,7 @@ export default async function PedidosPage({
           <select
             name="estado"
             defaultValue={estado ?? ""}
-            className="rounded-md border border-gray-300 px-3 py-1.5 text-sm"
+            className="rounded-md border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-900"
           >
             <option value="">Todos</option>
             {ESTADOS.map((e) => (
@@ -188,7 +188,7 @@ export default async function PedidosPage({
         <div className="flex gap-2">
           <Link
             href={buildQuery({ page: Math.max(1, page - 1) })}
-            className={`rounded-md border border-gray-300 px-3 py-1.5 ${
+            className={`rounded-md border border-gray-300 bg-white px-3 py-1.5 text-gray-700 ${
               page <= 1 ? "pointer-events-none opacity-40" : "hover:bg-gray-50"
             }`}
           >
@@ -196,7 +196,7 @@ export default async function PedidosPage({
           </Link>
           <Link
             href={buildQuery({ page: Math.min(totalPages, page + 1) })}
-            className={`rounded-md border border-gray-300 px-3 py-1.5 ${
+            className={`rounded-md border border-gray-300 bg-white px-3 py-1.5 text-gray-700 ${
               page >= totalPages ? "pointer-events-none opacity-40" : "hover:bg-gray-50"
             }`}
           >
