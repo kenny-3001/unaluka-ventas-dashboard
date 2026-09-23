@@ -17,15 +17,16 @@ if (!fs.existsSync(PEDIDOS_FILE) || !fs.existsSync(CONTROL_FILE)) {
   process.exit(1);
 }
 
-// empezar de cero en cada corrida del seed
-if (fs.existsSync(DB_PATH)) fs.rmSync(DB_PATH);
-if (fs.existsSync(DB_PATH + "-wal")) fs.rmSync(DB_PATH + "-wal");
-if (fs.existsSync(DB_PATH + "-shm")) fs.rmSync(DB_PATH + "-shm");
-
 const db = new Database(DB_PATH);
 db.pragma("journal_mode = WAL");
 
+// Solo se recrean las tablas de datos de ventas: la de usuarios/roles se
+// preserva a proposito, para que volver a correr el seed (por ejemplo, para
+// refrescar los Excel) no borre las cuentas ni los roles ya asignados.
 db.exec(`
+  DROP TABLE IF EXISTS pedidos;
+  DROP TABLE IF EXISTS control_ventas;
+
   CREATE TABLE pedidos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     vendedor TEXT,
@@ -61,7 +62,7 @@ db.exec(`
     observacion TEXT
   );
 
-  CREATE TABLE users (
+  CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email TEXT NOT NULL UNIQUE,
     name TEXT,
