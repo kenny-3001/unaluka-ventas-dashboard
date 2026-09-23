@@ -18,7 +18,7 @@ export default function DashboardPage() {
   const porVendedor = getVentasPorVendedor();
 
   return (
-    <main className="mx-auto w-full max-w-6xl flex-1 space-y-6 px-4 py-8">
+    <main className="mx-auto w-full max-w-[1440px] flex-1 space-y-6 px-6 py-8">
       <div>
         <h1 className="text-2xl font-semibold text-gray-900">Dashboard de ventas</h1>
         <p className="text-sm text-gray-500">
@@ -76,7 +76,7 @@ export default function DashboardPage() {
                     <td className="py-2 pr-2 font-mono text-xs text-gray-600">
                       {p.sku}
                     </td>
-                    <td className="max-w-[220px] truncate py-2 pr-2 text-gray-800">
+                    <td className="max-w-[360px] truncate py-2 pr-2 text-gray-800">
                       {p.producto}
                     </td>
                     <td className="py-2 pr-2 text-right text-gray-600">

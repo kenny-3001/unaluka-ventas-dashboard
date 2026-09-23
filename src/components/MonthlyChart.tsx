@@ -44,20 +44,25 @@ export default function MonthlyChart({
   return (
     <ResponsiveContainer width="100%" height={260}>
       <LineChart data={chartData} margin={{ top: 10, right: 20, left: 10, bottom: 0 }}>
-        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-        <XAxis dataKey="label" fontSize={12} stroke="#6b7280" />
+        <CartesianGrid strokeDasharray="3 3" stroke="#e1e0d9" />
+        <XAxis dataKey="label" fontSize={12} stroke="#898781" />
         <YAxis
           fontSize={12}
-          stroke="#6b7280"
+          stroke="#898781"
           tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`}
         />
-        <Tooltip formatter={(value) => formatSoles(Number(value))} />
+        <Tooltip
+          formatter={(value) => formatSoles(Number(value))}
+          contentStyle={{ borderColor: "#e1e0d9", fontSize: 13 }}
+          labelStyle={{ color: "#0b0b0b" }}
+        />
         <Line
           type="monotone"
           dataKey="total"
-          stroke="#4f46e5"
+          stroke="#2a78d6"
           strokeWidth={2}
-          dot={{ r: 3 }}
+          dot={{ r: 3, fill: "#2a78d6" }}
+          activeDot={{ r: 5 }}
         />
       </LineChart>
     </ResponsiveContainer>

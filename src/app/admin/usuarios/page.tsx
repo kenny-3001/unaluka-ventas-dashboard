@@ -35,7 +35,7 @@ export default function UsuariosPage() {
     .all() as Usuario[];
 
   return (
-    <main className="mx-auto w-full max-w-4xl flex-1 space-y-6 px-4 py-8">
+    <main className="mx-auto w-full max-w-[1440px] flex-1 space-y-6 px-6 py-8">
       <div>
         <h1 className="text-2xl font-semibold text-gray-900">Usuarios</h1>
         <p className="text-sm text-gray-500">
@@ -43,7 +43,7 @@ export default function UsuariosPage() {
         </p>
       </div>
 
-      <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
+      <div className="max-w-3xl overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
         <table className="w-full text-left text-sm">
           <thead>
             <tr className="border-b border-gray-100 text-gray-500">
