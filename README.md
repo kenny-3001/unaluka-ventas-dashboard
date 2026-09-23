@@ -21,6 +21,7 @@ Sistema web para consultar la información de ventas y pedidos que hoy el equipo
 - El cruce fila por fila entre `control_ventas` y `detalle_pedidos` (mencionado arriba) no se implementó.
 - No hay pruebas automatizadas, por el tiempo disponible.
 - La búsqueda de pedidos es exacta (sin fuzzy search) y la paginación es simple, sin salto a una página arbitraria.
+- El gráfico "Ventas por vendedor" muestra tal cual el valor de la columna `vendedor` de `detalle_pedidos`, que en varias filas no es el nombre de una persona sino una etiqueta de canal/sistema (por ejemplo "MKP", "Bot", "Formulario", "Web Aztra"). Filtrar esto para quedarse solo con el equipo comercial real es algo que quedó sin resolver por el tiempo disponible.
 
 ## Cómo correrlo localmente
 
