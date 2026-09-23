@@ -13,6 +13,7 @@ Sistema web para consultar la información de ventas y pedidos que hoy el equipo
 ## Cómo se usaron y relacionaron los dos archivos
 
 - **`detalle_pedidos_2026.xlsx`** (hoja "Detalle") es la fuente principal para todo el dashboard y el buscador de pedidos: trae el detalle completo de cada pedido (vendedor, SKU, categoría, canal, estado, montos). Las métricas de ventas solo consideran pedidos con estado "Completada".
+- La columna `vendedor` de "Detalle" mezcla personas del equipo comercial con etiquetas de canal/sistema (por ejemplo "MKP", "Bot", "Formulario", "Web Aztra"). El gráfico "Ventas por vendedor" usa como lista oficial los 14 nombres que aparecen en la hoja "Resumen" del mismo archivo; cualquier otro valor se agrupa como "Otros / canal automático".
 - **`control_ventas_2026.xlsx`** es el registro manual diario que usa hoy el equipo Comercial. Se carga en una tabla aparte (`control_ventas`) como referencia, pero no se cruza fila por fila contra `detalle_pedidos`: los códigos de pedido no siempre coinciden en formato entre ambos archivos (a veces falta el prefijo "UP", y hay vendedores que aparecen en un archivo y no en el otro), así que reconciliarlos con certeza no era viable en el tiempo disponible. Queda pendiente si en algún momento se necesita ese cruce exacto.
 
 ## Qué quedó pendiente
@@ -21,7 +22,6 @@ Sistema web para consultar la información de ventas y pedidos que hoy el equipo
 - El cruce fila por fila entre `control_ventas` y `detalle_pedidos` (mencionado arriba) no se implementó.
 - No hay pruebas automatizadas, por el tiempo disponible.
 - La búsqueda de pedidos es exacta (sin fuzzy search) y la paginación es simple, sin salto a una página arbitraria.
-- El gráfico "Ventas por vendedor" muestra tal cual el valor de la columna `vendedor` de `detalle_pedidos`, que en varias filas no es el nombre de una persona sino una etiqueta de canal/sistema (por ejemplo "MKP", "Bot", "Formulario", "Web Aztra"). Filtrar esto para quedarse solo con el equipo comercial real es algo que quedó sin resolver por el tiempo disponible.
 
 ## Cómo correrlo localmente
 

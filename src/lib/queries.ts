@@ -45,19 +45,45 @@ export function getTopProductos(limit = 10) {
   }[];
 }
 
+// Equipo comercial oficial (hoja "Resumen" de detalle_pedidos_2026.xlsx).
+// El resto de valores de "vendedor" en los datos son etiquetas de canal o
+// sistema (Bot, MKP, Web Aztra, Formulario, etc.), no personas del equipo.
+const VENDEDORES_OFICIALES = [
+  "Rojas Chávez Luciana",
+  "Cruz Huamán Alessandra",
+  "Aguilar Herrera Bruno",
+  "Mendoza Paredes Thiago",
+  "Ríos Villanueva Micaela",
+  "Rodríguez Medina Lucía",
+  "Ríos Pacheco Gabriel",
+  "Chávez Rojas Valeria",
+  "Villanueva García Daniela",
+  "Ortiz Torres Franco",
+  "Flores Villanueva Sebastián",
+  "Rojas Pacheco Emilio",
+  "Huamán Quispe Mateo",
+  "Pacheco Ríos Camila",
+];
+
 export function getVentasPorVendedor() {
   const db = getDb();
+  const placeholders = VENDEDORES_OFICIALES.map(() => "?").join(", ");
   return db
     .prepare(
-      `SELECT COALESCE(vendedor, 'Sin vendedor (canal automático)') as vendedor,
-              SUM(total_pen) as total,
-              COUNT(*) as pedidos
+      `SELECT
+         CASE WHEN vendedor IN (${placeholders}) THEN vendedor ELSE 'Otros / canal automático' END as vendedor,
+         SUM(total_pen) as total,
+         COUNT(*) as pedidos
        FROM pedidos
        WHERE estado = ?
-       GROUP BY vendedor
+       GROUP BY 1
        ORDER BY total DESC`
     )
-    .all(ESTADO_VALIDO) as { vendedor: string; total: number; pedidos: number }[];
+    .all(...VENDEDORES_OFICIALES, ESTADO_VALIDO) as {
+    vendedor: string;
+    total: number;
+    pedidos: number;
+  }[];
 }
 
 export type PedidoFiltros = {
