@@ -71,8 +71,8 @@ export default function DashboardPage() {
                 </tr>
               </thead>
               <tbody>
-                {topProductos.map((p) => (
-                  <tr key={p.sku} className="border-b border-gray-50 last:border-0">
+                {topProductos.map((p, i) => (
+                  <tr key={`${p.sku}-${i}`} className="border-b border-gray-50 last:border-0">
                     <td className="py-2 pr-2 font-mono text-xs text-gray-600">
                       {p.sku}
                     </td>
