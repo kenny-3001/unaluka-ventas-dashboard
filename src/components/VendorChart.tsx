@@ -19,8 +19,10 @@ export default function VendorChart({
 }: {
   data: { vendedor: string; total: number }[];
 }) {
+  const height = Math.max(300, data.length * 34);
+
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%" height={height}>
       <BarChart
         data={data}
         layout="vertical"
@@ -39,6 +41,7 @@ export default function VendorChart({
           width={150}
           fontSize={12}
           stroke="#52514e"
+          interval={0}
         />
         <Tooltip
           formatter={(value) => formatSoles(Number(value))}
