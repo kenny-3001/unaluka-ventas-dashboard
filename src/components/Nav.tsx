@@ -9,7 +9,8 @@ export default async function Nav() {
     <nav className="border-b border-gray-200 bg-white">
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 py-3">
         <div className="flex items-center gap-6">
-          <Link href="/" className="font-semibold text-gray-900">
+          <Link href="/" className="flex items-center gap-2 font-semibold text-gray-900">
+            <span className="h-2.5 w-2.5 rounded-full bg-blue-600" />
             Ventas Unaluka
           </Link>
           <Link
@@ -36,7 +37,13 @@ export default async function Nav() {
         <div className="flex items-center gap-3">
           <span className="text-sm text-gray-500">
             {session.user.name}{" "}
-            <span className="rounded bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700">
+            <span
+              className={`rounded px-2 py-0.5 text-xs font-medium ${
+                session.user.role === "admin"
+                  ? "bg-blue-100 text-blue-800"
+                  : "bg-gray-100 text-gray-700"
+              }`}
+            >
               {session.user.role === "admin" ? "Administrador" : "Solo lectura"}
             </span>
           </span>

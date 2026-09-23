@@ -52,7 +52,7 @@ export default async function PedidosPage({
 
   return (
     <main className="mx-auto w-full max-w-[1440px] flex-1 space-y-6 px-6 py-8">
-      <div>
+      <div className="border-l-4 border-blue-600 pl-3">
         <h1 className="text-2xl font-semibold text-gray-900">Pedidos</h1>
         <p className="text-sm text-gray-500">
           {total.toLocaleString("es-PE")} pedidos encontrados
@@ -105,7 +105,7 @@ export default async function PedidosPage({
         </div>
         <button
           type="submit"
-          className="rounded-md bg-gray-900 px-4 py-1.5 text-sm font-medium text-white hover:bg-gray-800"
+          className="rounded-md bg-blue-600 px-4 py-1.5 text-sm font-medium text-white hover:bg-blue-700"
         >
           Filtrar
         </button>
@@ -122,15 +122,15 @@ export default async function PedidosPage({
       <div className="overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
         <table className="w-full text-left text-sm">
           <thead>
-            <tr className="border-b border-gray-100 text-gray-500">
-              <th className="px-4 py-3 font-medium">Pedido</th>
-              <th className="px-4 py-3 font-medium">Fecha</th>
-              <th className="px-4 py-3 font-medium">Vendedor</th>
-              <th className="px-4 py-3 font-medium">Cliente</th>
-              <th className="px-4 py-3 font-medium">Canal</th>
-              <th className="px-4 py-3 font-medium">Estado</th>
-              <th className="px-4 py-3 font-medium">Producto</th>
-              <th className="px-4 py-3 text-right font-medium">Total</th>
+            <tr className="border-b border-blue-100 bg-blue-50 text-blue-900">
+              <th className="px-4 py-3 font-semibold">Pedido</th>
+              <th className="px-4 py-3 font-semibold">Fecha</th>
+              <th className="px-4 py-3 font-semibold">Vendedor</th>
+              <th className="px-4 py-3 font-semibold">Cliente</th>
+              <th className="px-4 py-3 font-semibold">Canal</th>
+              <th className="px-4 py-3 font-semibold">Estado</th>
+              <th className="px-4 py-3 font-semibold">Producto</th>
+              <th className="px-4 py-3 text-right font-semibold">Total</th>
             </tr>
           </thead>
           <tbody>

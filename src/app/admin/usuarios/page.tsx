@@ -36,7 +36,7 @@ export default function UsuariosPage() {
 
   return (
     <main className="mx-auto w-full max-w-[1440px] flex-1 space-y-6 px-6 py-8">
-      <div>
+      <div className="border-l-4 border-blue-600 pl-3">
         <h1 className="text-2xl font-semibold text-gray-900">Usuarios</h1>
         <p className="text-sm text-gray-500">
           Gestiona quién puede administrar el sistema y quién solo consulta.
@@ -46,11 +46,11 @@ export default function UsuariosPage() {
       <div className="max-w-3xl overflow-x-auto rounded-xl border border-gray-200 bg-white shadow-sm">
         <table className="w-full text-left text-sm">
           <thead>
-            <tr className="border-b border-gray-100 text-gray-500">
-              <th className="px-4 py-3 font-medium">Usuario</th>
-              <th className="px-4 py-3 font-medium">Email</th>
-              <th className="px-4 py-3 font-medium">Último ingreso</th>
-              <th className="px-4 py-3 font-medium">Rol</th>
+            <tr className="border-b border-blue-100 bg-blue-50 text-blue-900">
+              <th className="px-4 py-3 font-semibold">Usuario</th>
+              <th className="px-4 py-3 font-semibold">Email</th>
+              <th className="px-4 py-3 font-semibold">Último ingreso</th>
+              <th className="px-4 py-3 font-semibold">Rol</th>
             </tr>
           </thead>
           <tbody>
@@ -74,7 +74,7 @@ export default function UsuariosPage() {
                     </select>
                     <button
                       type="submit"
-                      className="rounded-md border border-gray-300 bg-white px-2 py-1 text-xs text-gray-700 hover:bg-gray-50"
+                      className="rounded-md bg-blue-600 px-2 py-1 text-xs font-medium text-white hover:bg-blue-700"
                     >
                       Guardar
                     </button>
